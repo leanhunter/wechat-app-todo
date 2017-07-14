@@ -10,5 +10,6 @@ page{
   background-color: #EADEAD;
   flex-direction: column;
   box-sizing: border-box;
+  position: relative;
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
 } 

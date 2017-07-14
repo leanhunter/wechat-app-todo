@@ -1,8 +1,7 @@
 //app.js
-const {Provider} = require('./libs/wechat-redux.js');
-const configureStore = require('./configureStore.js');
-
-App(Provider(configureStore())({
+import { Provider } from './vendors/weapp-redux.js';
+import { store } from './redux/store.js';
+App(Provider(store)({
   onLaunch: function (options) {
     console.log("onLaunch",options.scene);
     var logs = wx.getStorageSync('logs') || [];

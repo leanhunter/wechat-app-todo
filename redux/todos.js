@@ -1,4 +1,4 @@
-import {INIT_LIST,DELETE_ITEM,ADD_ITEM,MODIFY_ITEM} from '../actions/todos.js'
+import {INIT_LIST,DELETE_ITEM,ADD_ITEM,MODIFY_ITEM} from './actions/todos.js'
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -43,10 +43,14 @@ const todoMVC = (state=initState,action) => {
           ];
         return Object.assign({},state, {toDoList:toDoList });
     case ADD_ITEM:
-      state.toDoList.splice(0,0,{
+      let newItem = {
           content:action.obj.content,
-          id:guid()
-      })
+          id:guid(),
+      };
+      if(action.obj.date){
+        newItem.date = action.obj.date;
+      }
+      state.toDoList.splice(0,0,newItem);
       return Object.assign({},state,
         {toDoList:state.toDoList}
       )

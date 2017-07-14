@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
-const {connect} = require( '../../libs/wechat-redux.js' )
-import {modifyItem,addItem} from '../../actions/todos.js';
+import { connect } from '../../vendors/weapp-redux.js';
+import {modifyItem,addItem} from '../../redux/actions/todos.js';
 
 var app = getApp();
 const pageConfig = {
@@ -9,6 +9,7 @@ const pageConfig = {
     toDoList: [],
     doneList:[],
     input:'',
+    date:'',
     showDone:false,
     userInfo:{}
   },
@@ -16,10 +17,28 @@ const pageConfig = {
     const id = e.target.id ;
     this.modifyItem( id );
   },
-  add: function( e ){
-    this.addItem( {content:this.data.input} );
+  bindDateChange: function(e) {
     this.setData({
-      input:''
+      date: e.detail.value
+    })
+    if(this.data.input && this.data.date){
+      this.add();
+    }
+    console.log(e.detail.value)
+  },
+  clearDate:function(e) {
+    this.setData({
+      date: ''
+    })
+  },
+  add: function( ){
+    this.addItem({
+      content:this.data.input,
+      date:this.data.date
+    });
+    this.setData({
+      input:'',
+      date:''
     });
   },
   record:function(e){

@@ -1,16 +1,30 @@
 <!--index.wxml-->
-<view class="container">
+<scroll-view class="container">
 
-
-
-    <form class="add-todo" bindsubmit="add">
-    <input name="todo" bindconfirm="add" value="{{input}}" bindinput="record" class="input" placeholder-class="placeholder" placeholder="添加一个任务"/>
+  <form bindsubmit="add">
+    <view class="add-todo">
+    
+      <input name="todo" bindconfirm="add" value="{{input}}" bindinput="record" class="input" placeholder-class="placeholder" placeholder="添加一个任务"/>
+      <picker class="picker" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <image class="calendar" src="https://img.alicdn.com/tfs/TB1lO0hSpXXXXbkXFXXXXXXXXXX-64-64.png">
+          
+        </image>
+      </picker>
+    </view>
+    <view class="extra">
+        <view wx:if="{{date}}" class="viewDate" bindtap="clearDate">
+          <text class="date"> {{date}}</text><icon color="#666666" type="clear" size="12"/>
+        </view>
+    </view>
   </form>
 
   <view class="todos">
     <view wx:for="{{toDoList}}" wx:key="cell_todo_{{item.id}}" class="todo-item"  id="cell_todo_{{item.id}}">
       <checkbox id="{{item.id}}" checked="{{false}}" class="todo-item-check" bindtap="modify"/>
-      <text>{{item.content}}</text>
+      <view class="todo-item-content">
+        <text class="todo-item-content-text">{{item.content}}</text>
+        <text wx:if="{{item.date}}" class="todo-item-date">{{item.date}}</text>
+      </view>
     </view>
     <view class="viewDone">
         <view class="viewDoneBtn" bindtap="showDone">
@@ -18,10 +32,17 @@
         </view>
     </view>
     <view wx:if="{{showDone && doneList.length}}" wx:for="{{doneList}}" wx:key="cell_done_{{item.id}}" class="done-item"  id="cell_done_{{item.id}}">
+
       <checkbox disabled id="{{item.id}}" checked="{{true}}" class="done-item-check" />
-      <text class="done-item-content">{{item.content}}</text>
+      <view class="done-item-content">
+        <text class="done-item-content-text">{{item.content}}</text>
+        <text wx:if="{{item.date}}" class="done-item-date">{{item.date}}</text>
+      </view>
     </view>
   </view>
+  
    
   
-</view>
+</scroll-view>
+
+

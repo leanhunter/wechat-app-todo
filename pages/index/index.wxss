@@ -3,16 +3,53 @@ view,form{
     display:flex;
     flex-direction:column;
 }
+.add-todo {
+    background-color: rgba(0,0,0,0.4);
+    border-radius:10rpx;
+    height:80rpx;
+    flex-direction:row;
+}
 .input{
-    padding:0 12px;
-    height:40px;
-    font-size:14px;
+    padding:0 12rpx;
+    height:80rpx;
+    font-size:28rpx;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     border-color:transparent;
     color:#ffffff;
+    flex:1;
+}
+.picker{
+    width:60rpx;
+    height:80rpx;
+    /*justify-content:center;
+    align-items:center;*/
+}
+.calendar{
+    width:30rpx;
+    height:30rpx;
+    padding:25rpx 0 0 15rpx;
 }
 .placeholder{
     color:#eeeeee;
+}
+.extra{
+    height: 50rpx;
+
+    align-items:flex-end;
+}
+.viewDate{
+    width:300rpx;
+    height: 50rpx;
+    flex-direction: row;
+    justify-content:flex-end;
+    align-items:center;
+    border-radius:6px;
+    color: #333333;
+    font-size: 12px;
+    margin-right: 15rpx;
+}
+.date{
+    margin-right: 8rpx;
 }
 .todos {
   margin-top: 20rpx;
@@ -29,35 +66,37 @@ view,form{
 .todo-item-check{
     padding:10px;
 }
-.todo-item-content{
+.todo-item-content,.done-item-content{
     flex:1;
-    font-size: 28rpx;
-
-    text-overflow:ellipsis;
+    
 
     white-space:nowrap;
     overflow: hidden;
+}
+.todo-item-content-text{
+    font-size: 28rpx;
+    text-overflow:ellipsis;
+}
+.todo-item-date{
+    font-size: 20rpx;
+    color: #947806;
 }
 
 .done-item-check{
     padding:10px;
 }
-.done-item-content{
-    flex:1;
-    font-size: 28rpx;
 
-    text-overflow:ellipsis;
-    text-decoration:line-through;
+.done-item-content-text{
     color:#666666;
-    overflow: hidden;
+    text-decoration:line-through;
+    font-size: 28rpx;
+    text-overflow:ellipsis;
 }
-.add-todo {
-    background-color: rgba(0,0,0,0.4);
-    border-radius:10rpx;
-    height:80rpx;
-
-
+.done-item-date{
+    font-size: 20rpx;
+    color: #666666;
 }
+
 .viewDone{
     justify-content:center;
     align-items:center;
@@ -72,5 +111,15 @@ view,form{
     background-color: rgba(0,0,0,0.4);
     color: #eeeeee;
     font-size: 12px;
+}
+.calendar-bar{
+    position: fixed;
+    width:100%;
+    height:  60rpx;
+    background-color: #eeeeee;
+    left:0;
+    bottom: 0;
+    z-index: 2;
+    /*display: none;*/
 }
 
