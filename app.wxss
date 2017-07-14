@@ -1,0 +1,14 @@
+/**app.wxss**/
+page{
+  height:100%;
+  display: flex;
+
+}
+.container {
+  flex:1;
+  padding:20px;
+  background-color: #EADEAD;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+} 

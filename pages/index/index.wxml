@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+
+
+
+    <form class="add-todo" bindsubmit="add">
+    <input name="todo" bindconfirm="add" value="{{input}}" bindinput="record" class="input" placeholder-class="placeholder" placeholder="添加一个任务"/>
+  </form>
+
+  <view class="todos">
+    <view wx:for="{{toDoList}}" wx:key="cell_todo_{{item.id}}" class="todo-item"  id="cell_todo_{{item.id}}">
+      <checkbox id="{{item.id}}" checked="{{false}}" class="todo-item-check" bindtap="modify"/>
+      <text>{{item.content}}</text>
+    </view>
+    <view class="viewDone">
+        <view class="viewDoneBtn" bindtap="showDone">
+        <text> 查看 {{doneList.length}} 个已完成任务</text>
+        </view>
+    </view>
+    <view wx:if="{{showDone && doneList.length}}" wx:for="{{doneList}}" wx:key="cell_done_{{item.id}}" class="done-item"  id="cell_done_{{item.id}}">
+      <checkbox disabled id="{{item.id}}" checked="{{true}}" class="done-item-check" />
+      <text class="done-item-content">{{item.content}}</text>
+    </view>
+  </view>
+   
+  
+</view>
